@@ -46,23 +46,23 @@ ctest -V --test-dir build
 
 ## Структура проекта расширения 
 
-├── .vscode/              # Конфигурация VSCode
-├── dist/                 # Скомпилированные файлы
-├── node_modules/         # Зависимости npm
-├── src/                  # Исходный код
-│   └── extension.ts      # Основной файл расширения
-├── test/                 # Тесты
-├── .gitignore           # Игнорируемые файлы Git
-├── .vscode-test.mjs     # Конфигурация тестов VSCode
-├── .vscodeignore        # Игнорируемые файлы при упаковке
-├── CHANGELOG.md         # История изменений
-├── eslint.config.mjs    # Конфигурация ESLint
-├── package-lock.json    # Фиксированные версии зависимостей
-├── package.json         # Манифест npm
-├── README.md            # Документация
-├── tsconfig.json        # Конфигурация TypeScript
-├── vsc-extension-quickstart.md # Быстрый старт
-└── webpack.config.js    # Конфигурация Webpack
+├── .vscode/              # Конфигурация VSCode  
+├── dist/                 # Скомпилированные файлы  
+├── node_modules/         # Зависимости npm  
+├── src/                  # Исходный код  
+│   └── extension.ts      # Основной файл расширения  
+├── test/                 # Тесты  
+├── .gitignore           # Игнорируемые файлы Git  
+├── .vscode-test.mjs     # Конфигурация тестов VSCode  
+├── .vscodeignore        # Игнорируемые файлы при упаковке  
+├── CHANGELOG.md         # История изменений  
+├── eslint.config.mjs    # Конфигурация ESLint  
+├── package-lock.json    # Фиксированные версии зависимостей  
+├── package.json         # Манифест npm  
+├── README.md            # Документация  
+├── tsconfig.json        # Конфигурация TypeScript  
+├── vsc-extension-quickstart.md # Быстрый старт  
+└── webpack.config.js    # Конфигурация Webpack  
 
 ## Требования
 
