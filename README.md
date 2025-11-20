@@ -30,45 +30,54 @@ ctest -V --test-dir build
 
 * Совместимый компилятор (GCC, Clang, MSVC и т.д.)
 
-## Known Issues
+## Установка расширения
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Установите в VSCode через VSIX файл или скопируйте в папку расширений  
 
-## Release Notes
+## Использование
 
-Users appreciate release notes as you update your extension.
+* Откройте проект с CMake в VSCode
 
-### 1.0.0
+* Убедитесь, что в корне проекта есть файл CMakeLists.txt
 
-Initial release of ...
+* Нажмите на кнопку "Build & Test" в статус-баре (правый нижний угол)
 
-### 1.0.1
+* Наблюдайте за процессом в открывшемся терминале
 
-Fixed issue #.
+## Структура проекта расширения 
 
-### 1.1.0
+├── .vscode/              # Конфигурация VSCode
+├── dist/                 # Скомпилированные файлы
+├── node_modules/         # Зависимости npm
+├── src/                  # Исходный код
+│   └── extension.ts      # Основной файл расширения
+├── test/                 # Тесты
+├── .gitignore           # Игнорируемые файлы Git
+├── .vscode-test.mjs     # Конфигурация тестов VSCode
+├── .vscodeignore        # Игнорируемые файлы при упаковке
+├── CHANGELOG.md         # История изменений
+├── eslint.config.mjs    # Конфигурация ESLint
+├── package-lock.json    # Фиксированные версии зависимостей
+├── package.json         # Манифест npm
+├── README.md            # Документация
+├── tsconfig.json        # Конфигурация TypeScript
+├── vsc-extension-quickstart.md # Быстрый старт
+└── webpack.config.js    # Конфигурация Webpack
 
-Added features X, Y, and Z.
+## Требования
 
----
+* Visual Studio Code ≥ 1.105
+* Node.js ≥ 14.x
+* CMake ≥ 3.10
+* CTest (обычно входит в состав CMake)
 
-## Following extension guidelines
+## Возможные проблемы
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+### Кнопка не отображается
+* Убедитесь, что в корне проекта есть файл CMakeLists.txt
+* Перезагрузите окно VSCode (Ctrl+Shift+P → "Developer: Reload Window")
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+### Ошибки выполнения команд
+* Проверьте установку CMake и CTest
+* Убедитесь, что компилятор настроен правильно
+* Проверьте права доступа к папке сборки
