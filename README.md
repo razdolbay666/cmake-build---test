@@ -66,7 +66,7 @@ ctest -V --test-dir build
 
 ## Требования
 
-* Visual Studio Code ≥ 1.105
+* Visual Studio Code ≥ 1.105.1
 * Node.js ≥ 14.x
 * CMake ≥ 3.10
 * CTest (обычно входит в состав CMake)
