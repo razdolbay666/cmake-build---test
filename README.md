@@ -1,31 +1,34 @@
-# cmake-build---test README
+# CMake Build & Test VSCode Extension
 
-This is the README for your extension "cmake-build---test". After writing up a brief description, we recommend including the following sections.
+Расширение для Visual Studio Code, которое добавляет кнопку в статус-бар для автоматического выполнения команд CMake сборки и тестирования.
 
-## Features
+## Функциональность
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+* Однокнопочная сборка и тестирование - запускает полный цикл сборки и тестирования CMake проекта
 
-For example if there is an image subfolder under your extension project workspace:
+* Автоматическое определение проекта - кнопка отображается только в проектах с файлом CMakeLists.txt
 
-\!\[feature X\]\(images/feature-x.png\)
+* Интегрированный терминал - команды выполняются в отдельном терминале VSCode
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Команды
 
-## Requirements
+Расширение выполняет следующие команды в последовательности:
+```
+cmake -B build
+cmake --build build
+ctest -V --test-dir build
+```
+## Установка
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Предварительные требования:
 
-## Extension Settings
+* Visual Studio Code
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+* Установленный CMake
 
-For example:
+* Установленный CTest
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+* Совместимый компилятор (GCC, Clang, MSVC и т.д.)
 
 ## Known Issues
 
