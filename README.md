@@ -88,3 +88,14 @@ ctest -V --test-dir build
 * Проверьте установку CMake и CTest
 * Убедитесь, что компилятор настроен правильно
 * Проверьте права доступа к папке сборки
+
+## История коммитов 
+
+* 26d211b (HEAD -> master, origin/master) Changed author to ФИО
+* cecdc4f Added author's name
+* 47112fe Updated VScode required version
+* 2a68ee5 Fixed formatting in Readme
+* 8964926 Changed CHANGELOG.md
+* 667afb4 Made readme md
+* 97803c5 Made brief description
+* d25531f Added button
