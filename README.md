@@ -124,20 +124,21 @@ ctest -V --test-dir build
   * export function deactivate() {} - функция деактивации 
 
 ## API Visual Studio Code
+
 Архитектура VSCode устроена таким образом, что для каждого расширения запускается изолированный процесс для  выполнения. Это защищает основное приложение от сбоев в расширениях и обеспечивает безопасность.  
 Основные пространства имен API  
-vscode.commands    // Регистрация и выполнение команд  
-vscode.window      // Работа с окнами, уведомлениями, статус-баром  
-vscode.workspace   // Доступ к файловой системе и настройкам  
-vscode.languages   // Языковые функции (подсветка, автодополнение)  
-vscode.extensions  // Управление расширениями  
+* vscode.commands    // Регистрация и выполнение команд  
+* vscode.window      // Работа с окнами, уведомлениями, статус-баром  
+* vscode.workspace   // Доступ к файловой системе и настройкам  
+* vscode.languages   // Языковые функции (подсветка, автодополнение)  
+* vscode.extensions  // Управление расширениями  
   
 Точки расширения определяются в package.json   
 Расширения использовались:  
-vscode.commands.registerCommand() - регистрация команд  
-vscode.window.createStatusBarItem() - кнопка в статус-баре  
-vscode.window.createTerminal() - работа с терминалом  
-vscode.workspace.findFiles() - поиск файлов проекта  
+* vscode.commands.registerCommand() - регистрация команд  
+* vscode.window.createStatusBarItem() - кнопка в статус-баре  
+* vscode.window.createTerminal() - работа с терминалом  
+* vscode.workspace.findFiles() - поиск файлов проекта  
 Модель активации — активация при обнаружении CmakeLists.txt  
 
 ## История коммитов 
