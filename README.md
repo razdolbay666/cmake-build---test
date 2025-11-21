@@ -71,7 +71,7 @@ ctest -V --test-dir build
 ├── vsc-extension-quickstart.md # Быстрый старт  
 └── webpack.config.js    # Конфигурация Webpack  
 
-## Требования
+## Минимальные требования 
 
 * Visual Studio Code ≥ 1.105.1
 * Node.js ≥ 14.x
@@ -85,9 +85,60 @@ ctest -V --test-dir build
 * Перезагрузите окно VSCode (Ctrl+Shift+P → "Developer: Reload Window")
 
 ### Ошибки выполнения команд
+
 * Проверьте установку CMake и CTest
 * Убедитесь, что компилятор настроен правильно
 * Проверьте права доступа к папке сборки
+
+## Детальное описание функций 
+
+* export function activate(context: vscode.ExtensionContext) {} - функция активации расширения
+
+* let disposable = vscode.commands.registerCommand('cmake-build-test.runBuildTest', async () => {}) - регистрация функциональности 
+
+* const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.fsPath; - получение пути к рабочему пространству 
+
+* const terminal = vscode.window.createTerminal('CMake Build & Test'); - создание терминала  
+* terminal.show(); - отображение терминала  
+* Вывод в терминал команд:
+  * terminal.sendText(`cd "${workspaceFolder}"`); - переключиться на папку рабочего пространства 
+  * terminal.sendText('cmake -B build'); - создать папку сборки с названием build
+  * terminal.sendText('cmake --build build'); - собрать проект
+  * terminal.sendText('ctest -V --test-dir build'); - запуск тестов
+
+* let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100); - создать элемент статус бара (кнопка)
+
+* ``` if (vscode.workspace.workspaceFolders) {
+        const workspaceFolder = vscode.workspace.workspaceFolders[0];
+        vscode.workspace.findFiles('CMakeLists.txt', null, 1).then(files => {
+            if (files.length > 0) {
+                statusBarItem.show();
+            }
+        });
+    } ``` - показать элемент статус бара, если есть CMakeLists.txt  
+
+* Автоматическая очистка при деактивации:
+  * context.subscriptions.push(disposable); 
+  * context.subscriptions.push(statusBarItem);
+
+  * export function deactivate() {} - функция деактивации 
+
+## API Visual Studio Code
+Архитектура VSCode устроена таким образом, что для каждого расширения запускается изолированный процесс для  выполнения. Это защищает основное приложение от сбоев в расширениях и обеспечивает безопасность.  
+Основные пространства имен API  
+vscode.commands    // Регистрация и выполнение команд  
+vscode.window      // Работа с окнами, уведомлениями, статус-баром  
+vscode.workspace   // Доступ к файловой системе и настройкам  
+vscode.languages   // Языковые функции (подсветка, автодополнение)  
+vscode.extensions  // Управление расширениями  
+  
+Точки расширения определяются в package.json   
+Расширения использовались:  
+vscode.commands.registerCommand() - регистрация команд  
+vscode.window.createStatusBarItem() - кнопка в статус-баре  
+vscode.window.createTerminal() - работа с терминалом  
+vscode.workspace.findFiles() - поиск файлов проекта  
+Модель активации — активация при обнаружении CmakeLists.txt  
 
 ## История коммитов 
 
